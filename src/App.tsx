@@ -1,15 +1,9 @@
-import { useState } from 'react'
+import Navbar from './components/Navbar'
+import './styles.scss'
 
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <h2>app</h2>
-    </>
+    <Navbar />
   )
 }
-
 export default App
