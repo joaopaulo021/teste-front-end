@@ -2,7 +2,7 @@ import { FiHelpCircle, FiMail, FiSettings, FiChevronDown } from 'react-icons/fi'
 import logo from "../../assets/logo.png"
 import './styles.scss'
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <header>
       <div>
