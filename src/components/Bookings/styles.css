@@ -1,0 +1,14 @@
+.bookings {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.bookings .column {
+  font-size: 0.7rem;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=styles.css.map */

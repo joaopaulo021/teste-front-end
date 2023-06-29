@@ -1,0 +1,33 @@
+.booking {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.booking img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.booking .booking-img {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 35%;
+}
+.booking .booking-img .description {
+  margin-left: 5px;
+}
+.booking .booking-img img {
+  width: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.booking .booking-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}/*# sourceMappingURL=styles.css.map */
