@@ -1,21 +1,19 @@
 import './styles.scss'
 import { FiCommand, FiPlus, FiSettings } from 'react-icons/fi'
 
-
-
-const Aside = () => {
+const Aside: React.FC = () => {
   return (
     <div className="aside-container">
       <aside>
 
         <div className="btn-container">
           <FiCommand />
-          <a href="#">Dashboard</a>
+          <a href="/">Dashboard</a>
         </div>
 
         <div className="btn-container">
           <FiPlus />
-          <a href="#">Nova reserva</a>
+          <a href="/cadastro">Nova reserva</a>
         </div>
 
         <div className="btn-container">
@@ -27,5 +25,4 @@ const Aside = () => {
     </div>
   )
 }
-
 export default Aside
