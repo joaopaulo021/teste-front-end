@@ -53,17 +53,17 @@ const App: React.FC = () => {
     setLocalStorage(newItems)
   }
 
-  // const handleSearch = (searchItem: string) => {
-  //   const filteredData = data.filter((item) => {
-  //     const searchTerm = searchItem.toLowerCase();
-  //     const acomodacao = item.acomodacao.toLowerCase();
-  //     const data = item.checkIn.toLowerCase();
-  //     const nomeHospede = item.nome.toLowerCase();
+  const handleSearch = (searchItem: string) => {
+    const filteredData = data.filter((item) => {
+      const searchTerm = searchItem.toLowerCase();
+      const acomodacao = item.acomodacao.toLowerCase();
+      const data = item.checkIn.toLowerCase();
+      const nomeHospede = item.nome.toLowerCase();
 
-  //     return acomodacao.includes(searchTerm) || data.includes(searchTerm) || nomeHospede.includes(searchTerm);
-  //   });
-  //   setData(filteredData);
-  // }
+      return acomodacao.includes(searchTerm) || data.includes(searchTerm) || nomeHospede.includes(searchTerm);
+    });
+    setData(filteredData);
+  }
 
   const router = createBrowserRouter([
     {
