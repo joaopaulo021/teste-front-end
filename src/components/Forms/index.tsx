@@ -62,7 +62,35 @@ const Forms: React.FC<FormProps> = ({ addItem, editItem }: FormProps) => {
     }
   }
 
+  const validarCPF = (cpf: string): boolean => {
+    cpf = cpf.replace(/\D/g, ''); // Remove caracteres não numéricos
+    if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {
+      return false;
+    }
+    const digit1 = calcularDigitoVerificador(cpf, 9);
+    const digit2 = calcularDigitoVerificador(cpf, 10);
 
+    return cpf.slice(9) === `${digit1}${digit2}`;
+  };
+
+  const calcularDigitoVerificador = (cpf: string, length: number): string => {
+    let sum = 0;
+    let weight = length + 1;
+    for (let i = 0; i < length; i++) {
+      sum += parseInt(cpf.charAt(i)) * weight;
+      weight--;
+    }
+    const mod = sum % 11;
+    const digit = mod < 2 ? 0 : 11 - mod;
+    return digit.toString();
+  };
+
+  const handleBlur = () => {
+    const isValid = validarCPF(formValues.documento);
+    if (!isValid) {
+      alert('CPF invalido')
+    }
+  };
 
   const generateShortId = () => {
     const idLength = 6;
