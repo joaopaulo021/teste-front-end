@@ -18,15 +18,15 @@ const defaultList: FormValues[] = JSON.parse(localStorage.getItem('bookings') ||
 const App: React.FC = () => {
 
   const [data, setData] = useState<FormValues[]>(defaultList);
-  // const [sortCriteria, setSortCriteria] = useState<SortCriteria | null>(null);
+  const [sortCriteria, setSortCriteria] = useState<SortCriteria | null>(null);
 
-  // const sortData = (criteria: SortCriteria) => {
-  //   setSortCriteria(criteria);
-  //   const sortedData = [...data].sort((a, b) =>
-  //     a[criteria].localeCompare(b[criteria])
-  //   );
-  //   setData(sortedData);
-  // };
+  const sortData = (criteria: SortCriteria) => {
+    setSortCriteria(criteria);
+    const sortedData = [...data].sort((a, b) =>
+      a[criteria].localeCompare(b[criteria])
+    );
+    setData(sortedData);
+  };
 
   const addItem = (reservaData: FormValues) => {
     const newItem: FormValues = {
