@@ -1,13 +1,58 @@
+export enum SortCriteria {
+  Acomodacao = 'acomodacao',
+  Nome = 'nome',
+  CheckIn = 'checkIn',
+}
+
+export interface MainProps {
+  deleteItem: (
+    id: string
+  ) => void;
+  data: ReservaData[];
+}
 export interface FormProps {
   addItem: (
     reservaData: FormValues
   ) => void;
+  editItem: (
+    updatedItem: FormValues
+  ) => void;
+}
+
+export interface BookingsProps {
+  sortData: (
+    criteria: SortCriteria
+  ) => void;
+  deleteItem: (
+    id: string
+  ) => void;
+  handleSearch: (
+    searchItem: string
+  ) => void;
+  data: ReservaData[];
 }
 export interface BookingProps {
-  item: ReservaData;
-}
-export interface MainProps {
   data: ReservaData[];
+  item: ReservaData;
+  deleteItem: (
+    id: string
+  ) => void;
+}
+
+export interface ModalProps {
+  item: ReservaData;
+  deleteItem: (
+    id: string
+  ) => void;
+  toggleModal: () => void;
+  getImagePath: (
+    acomodacao: string
+  ) => string;
+}
+export interface SearchProps {
+  handleSearch: (
+    searchItem: string
+  ) => void;
 }
 
 export interface ReservaData {
@@ -16,13 +61,14 @@ export interface ReservaData {
   acomodacao: string;
   checkIn: string;
   checkOut: string;
-  hospedes: number;
+  hospedes: string;
+  sobrenome: string;
 }
 
 export interface DadosPessoais {
   nome: string;
   sobrenome: string;
-  documento: number;
+  documento: string;
   dataNascimento: string;
   telefone: string;
   email: string;
