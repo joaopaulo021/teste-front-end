@@ -37,6 +37,15 @@ const Forms: React.FC<FormProps> = ({ addItem, editItem }: FormProps) => {
   const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
 
 
+  const generateShortId = () => {
+    const idLength = 6;
+    const alphabet = '0123456789';
+    const nanoid = customAlphabet(alphabet, idLength);
+    return nanoid();
+  };
+
+  const shortId = generateShortId();
+
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
