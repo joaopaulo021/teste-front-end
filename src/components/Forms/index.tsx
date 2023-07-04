@@ -36,6 +36,33 @@ const Forms: React.FC<FormProps> = ({ addItem, editItem }: FormProps) => {
 
   const [formValues, setFormValues] = useState<FormValues>(initialFormValues);
 
+  const fetchCep = () => {
+    const cep = formValues.cep.replace(/\D/g, '');
+    try {
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.erro) {
+            alert('CEP inválido');
+          }
+          setFormValues((prevFormValues) => ({
+            ...prevFormValues,
+            rua: data.logradouro || '',
+            bairro: data.bairro || '',
+            cidade: data.localidade || '',
+            estado: data.uf || '',
+          }));
+        })
+        .catch(error => {
+          console.log(error)
+          alert('Erro ao buscar dados do CEP');
+        });
+    } catch (error) {
+      alert('Erro ao buscar dados do CEP');
+    }
+  }
+
+
 
   const generateShortId = () => {
     const idLength = 6;
