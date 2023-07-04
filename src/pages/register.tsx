@@ -1,9 +1,9 @@
 import Forms from "../components/Forms";
 import { FormProps } from "../interfaces/interface";
 
-const Register: React.FC<FormProps> = ({ addItem }: FormProps) => {
+const Register: React.FC<FormProps> = ({ addItem, editItem }) => {
   return (
-    <Forms addItem={addItem} />
+    <Forms editItem={editItem} addItem={addItem} />
   );
 };
 
