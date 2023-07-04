@@ -1,23 +1,32 @@
 .booking {
   width: 100%;
   display: flex;
+  margin-top: 10px;
+  align-items: center;
   justify-content: space-between;
 }
-.booking img {
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+.booking .btn-modal {
+  height: 5%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: black;
+  border: none;
 }
 .booking .booking-img {
   padding: 5px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
   width: 35%;
 }
 .booking .booking-img .description {
   margin-left: 5px;
+}
+.booking .booking-img .description button {
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  color: blue;
+  font-weight: bold;
 }
 .booking .booking-img img {
   width: 50%;
@@ -25,9 +34,19 @@
      object-fit: cover;
 }
 .booking .booking-item {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 30%;
+}
+.booking .booking-item span {
+  height: 50%;
+  width: 40%;
+  text-align: center;
+  background-color: transparent;
+}
+.booking .booking-item h4 {
+  text-align: center;
 }/*# sourceMappingURL=styles.css.map */
