@@ -6,19 +6,23 @@ import Register from './pages/register'
 import Bookings from './components/Bookings'
 import { FormValues, SortCriteria } from './interfaces/interface';
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 
 const setLocalStorage = (items: FormValues[]) => {
   localStorage.setItem('bookings', JSON.stringify(items));
 }
-const defaultList: FormValues[] = JSON.parse(localStorage.getItem('bookings') || '[]');
 
 const App: React.FC = () => {
 
-  const [data, setData] = useState<FormValues[]>(defaultList);
+  const [data, setData] = useState<FormValues[]>([]);
   const [sortCriteria, setSortCriteria] = useState<SortCriteria | null>(null);
+
+  useEffect(() => {
+    const defaultList: FormValues[] = JSON.parse(localStorage.getItem('bookings') || '[]');
+    setData(defaultList);
+  }, []);
 
   const sortData = (criteria: SortCriteria) => {
     setSortCriteria(criteria);
