@@ -1,24 +1,55 @@
 import Booking from '../Booking'
 import './styles.scss'
-import { MainProps } from '../../interfaces/interface';
+import { BookingsProps, SortCriteria } from '../../interfaces/interface';
 import { nanoid } from 'nanoid';
+import SearchBooking from '../SearchBooking';
 
-const Bookings: React.FC<MainProps> = ({ data }) => {
+const Bookings: React.FC<BookingsProps> = ({ sortData, handleSearch, data, deleteItem }) => {
 
   return (
-    <section className='bookings'>
-      <div className="column">
-        <h2>Acomodação</h2>
-        <h2>Hospedes</h2>
-        <h2>Check-In</h2>
-        <h2>Check-out</h2>
+
+    <main className='bookings'>
+      <SearchBooking handleSearch={handleSearch} />
+
+      <div className="filter-btns">
+        <button
+          type="button"
+          onClick={() => sortData(SortCriteria.Acomodacao)}
+        >
+          Ordenar por Acomodação
+        </button>
+
+        <button
+          type="button"
+          onClick={() => sortData(SortCriteria.Nome)}
+        >
+          Ordenar por Nome
+        </button>
+
+        <button
+          type="button"
+          onClick={() => sortData(SortCriteria.CheckIn)}
+        >
+          Ordenar por Check-In
+        </button>
+
       </div>
-      <div className="booking-container">
-        {data.map((item) => {
-          return <Booking item={item} key={nanoid()} />
-        })}
-      </div>
-    </section>
+      <section className='main-container'>
+        <div className="booking-container">
+          <div className="column">
+            <h2>Acomodação</h2>
+            <h2>Hospedes</h2>
+            <h2>Check-In</h2>
+            <h2>Check-out</h2>
+          </div>
+          <div className="items-container">
+            {data.map((item) => {
+              return <Booking data={data} key={nanoid()} deleteItem={deleteItem} item={item} />;
+            })}
+          </div>
+        </div>
+      </section>
+    </main>
   )
 }
 export default Bookings
