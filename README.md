@@ -8,7 +8,7 @@
 
 ## Como Utilizar
 
-1. Acesse o aplicativo hospedado em [https://link](https://link).
+1. Acesse o aplicativo hospedado em [https://hotel-bookings-git-main-joaopaulo021.vercel.app/](https://hotel-bookings-git-main-joaopaulo021.vercel.app/).
 2. Clique em Nova reserva.
 3. Preencha todos os campos com os dados da reserva.
 4. Clique em Fazer reserva.
