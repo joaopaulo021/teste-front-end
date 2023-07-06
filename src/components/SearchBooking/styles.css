@@ -15,6 +15,10 @@
   height: 100%;
   justify-content: space-between;
 }
+.search-container .link-search-container a {
+  outline: none;
+  text-decoration: none;
+}
 .search-container .link-search-container .search {
   height: 8vh;
   border-radius: 5px;
@@ -27,7 +31,7 @@
 }
 .search-container .link-search-container .search button {
   font-size: 1rem;
-  color: black;
+  color: var(--text-primary);
   background-color: transparent;
 }
 .search-container .link-search-container span {
@@ -40,8 +44,14 @@
   background-color: white;
 }
 .search-container .link-search-container span a {
+  padding: 10px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
   text-decoration: none;
   margin-left: 10px;
+}
+.search-container .link-search-container span a.selected {
+  border-bottom: 3px solid var(--primary-color);
 }
 .search-container .link-search-container button {
   padding: 10px;
@@ -51,16 +61,89 @@
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  background-color: blue;
+  background-color: var(--primary-color);
+}
+.search-container .link-search-container button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--primary-light);
 }
 .search-container .link-search-container button p {
   margin-left: 5px;
 }
 .search-container .link-search-container input {
+  padding: 5px;
+  border-radius: 3px;
   margin-right: 5px;
   border: none;
-  background-color: rgb(236, 228, 228);
+  background-color: var(--light-bg);
   height: 100%;
   width: 100%;
   outline: none;
+}
+
+@media (width < 600px) {
+  .search-container {
+    padding: 0;
+    width: 100%;
+  }
+  .search-container .link-search-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .search-container .link-search-container span {
+    margin-top: 1rem;
+    order: 2;
+    width: 100%;
+  }
+  .search-container .link-search-container span a {
+    font-size: 0.7rem;
+  }
+  .search-container .link-search-container .search {
+    margin-top: 10px;
+    width: 100%;
+  }
+  .search-container .link-search-container .new-booking {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .search-container .link-search-container .new-booking button {
+    font-size: 0.8rem;
+    width: 90vw;
+  }
+}
+@media (width >= 600px) and (width <= 1024px) {
+  .search-container {
+    padding: 0;
+  }
+  .search-container .link-search-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .search-container .link-search-container span {
+    margin-top: 1rem;
+    order: 2;
+    width: 100%;
+  }
+  .search-container .link-search-container span a {
+    font-size: 0.7rem;
+  }
+  .search-container .link-search-container .search {
+    margin-top: 10px;
+    width: 100%;
+  }
+  .search-container .link-search-container .new-booking {
+    order: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .search-container .link-search-container .new-booking button {
+    font-size: 0.8rem;
+    width: 60vw;
+  }
 }/*# sourceMappingURL=styles.css.map */

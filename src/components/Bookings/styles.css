@@ -3,29 +3,40 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background-color: gainsboro;
+  background-color: var(--light-bg);
 }
 .bookings .main-container {
-  padding: 20px;
+  padding: 25px;
   height: 100%;
   width: 100%;
 }
-.bookings .booking-container {
-  background-color: aliceblue;
+.bookings .main-container .booking-container {
+  box-shadow: 0 0 10px var(--primary-light);
+  background-color: white;
   padding: 20px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
 }
-.bookings .booking-container .column {
+.bookings .main-container .booking-container .column {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  padding: 10px;
+  border-bottom: 1px solid var(--text-light);
   margin-right: 2%;
   display: flex;
   justify-content: space-around;
 }
-.bookings .booking-container .items-container {
+.bookings .main-container .booking-container .items-container {
   padding: 10px;
   display: flex;
   flex-direction: column;
+}
+.bookings .main-container .booking-container .items-container h1 {
+  color: var(--text-primary);
+  margin-top: 10px;
+  font-size: 1.2rem;
+  text-align: center;
 }
 .bookings .filter-btns {
   align-items: center;
@@ -36,7 +47,7 @@
 .bookings .filter-btns button {
   display: inline-block;
   padding: 8px 16px;
-  font-size: 14px;
+  font-size: 0.8rem;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
@@ -48,9 +59,42 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 .bookings .filter-btns button:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px var(--primary-light);
 }
 .bookings .filter-btns button:active {
-  background-color: #5582eb;
+  background-color: var(--primary-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (width < 600px) {
+  .bookings .main-container {
+    padding: 10px;
+  }
+  .bookings .main-container .filter-btns button {
+    font-size: 0.7rem;
+  }
+  .bookings .main-container .booking-container {
+    padding: 0;
+  }
+  .bookings .main-container .booking-container .column {
+    width: 100%;
+    white-space: nowrap;
+  }
+  .bookings .main-container .booking-container .column h2 {
+    font-size: 0.7rem;
+  }
+}
+@media (width >= 600px) and (width <= 1024px) {
+  .bookings .main-container {
+    padding: 10px;
+  }
+  .bookings .main-container .filter-btns button {
+    font-size: 0.7rem;
+  }
+  .bookings .main-container .booking-container {
+    padding: 0;
+  }
+  .bookings .main-container .booking-container .column h2 {
+    font-size: 1rem;
+  }
 }/*# sourceMappingURL=styles.css.map */

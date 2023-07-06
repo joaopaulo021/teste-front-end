@@ -1,21 +1,134 @@
-.inputs-container {
-    border: 2px solid blue;
-    height: 100%;
+.form-area {
+    background-color: var(--light-bg);
+    padding: 40px;
     width: 100%;
-    .input-data {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-gap: 10px;
-        align-items: center;
-        justify-content: space-around;
-        padding: 10px;
-        p {}
-        input {}
-        select {
-            display: flex;
-        }
-        .input-container {
+    height: 100%;
+    .inputs-container {
+        border-radius: 10px;
+        box-shadow: 0 0 10px var(--primary-light);
+        padding: 20px;
+        background-color: #ffff;
+        height: 100%;
+        width: 100%;
+        h2 {
+            white-space: nowrap;
             padding: 10px;
+            border-image: linear-gradient(to left, gray 50%, blue 50%);
+            border-image-slice: 1;
+            font-size: 1.1rem;
+            width: 20%;
+            border-bottom: 2px solid;
+        }
+        .input-data {
+            background-color: #ffff;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            align-items: center;
+            justify-content: space-around;
+            padding: 10px;
+            p {}
+            input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                outline: none;
+                transition: border-color 0.3s ease;
+                &:focus {
+                    border-color: var(--primary-color);
+                }
+            }
+            select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                outline: none;
+                transition: border-color 0.3s ease;
+                display: flex;
+                &:focus {
+                    border-color: var(--primary-color);
+                }
+            }
+            .input-container {
+                padding: 10px;
+            }
+        }
+        .btn-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            button {
+                cursor: pointer;
+                width: 15%;
+                border-radius: 5px;
+                border: none;
+                padding: 10px;
+                font-size: 1rem;
+                color: var(--primary-light);
+                background-color: var(--primary-color);
+                transition: all 1s ease;
+                &:hover {
+                    box-shadow: 0 0 10px var(--primary-light);
+                }
+            }
+            a {
+                color: var(--text-secondary);
+            }
+        }
+    }
+}
+
+@media(width < 600px) {
+    .form-area {
+        padding: 10px;
+        width: 100%;
+        .inputs-container {
+            width: 100%;
+            .input-data {
+                grid-template-columns: repeat(1, 1fr);
+                select {
+                    font-size: 0.8rem;
+                    option {}
+                }
+            }
+            .btn-container {
+                button {
+                    width: 70%;
+                }
+                a {
+                    text-decoration: none;
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media (width >=600px) and (width <=1024px) {
+    .form-area {
+        padding: 10px;
+        width: 100%;
+        .inputs-container {
+            width: 100%;
+            .input-data {
+                grid-template-columns: repeat(2, 1fr);
+                select {
+                    font-size: 0.8rem;
+                    option {}
+                }
+            }
+            .btn-container {
+                button {
+                    width: 50%;
+                }
+                a {
+                    text-decoration: none;
+                    margin-right: 1rem;
+                }
+            }
         }
     }
 }

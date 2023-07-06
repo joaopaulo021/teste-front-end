@@ -1,42 +1,171 @@
-header {
-    display: flex;
-    padding: 20px;
-    justify-content: space-between;
-    width: 100%;
-    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
-    .menu-container {
-        display: flex;
-        width: 20rem;
-        align-items: center;
-        .icons {
-            border-right: 1px solid gray;
-            color: #566589;
-            height: 70%;
-            width: 40%;
+        header {
+            height: 12vh;
             display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-        }
-        .login {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            height: 70%;
-            width: 60%;
-            p {
-                font-weight: bold;
-            }
+            padding: 20px;
+            justify-content: space-between;
+            width: 100%;
+            box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
             span {
+                width: 20%;
+                position: relative;
+                img {
+                    padding: 10px;
+                    top: -2vh;
+                    position: relative;
+                    height: 10vh;
+                    width: 70%;
+                }
+            }
+            .icons-container {
+                padding: 10px;
+                border-right: 1px solid gray;
+                border-left: 1px solid gray;
                 display: flex;
-                background-color: #e9f7f7;
+                justify-content: flex-end;
+                width: 80%;
                 align-items: center;
-                justify-content: center;
-                width: 3rem;
-                height: 3rem;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-                border-radius: 100%;
-                font-size: 1rem;
+                .icons {
+                    color: #566589;
+                    height: 100%;
+                    width: 15%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly
+                }
+            }
+            .menu-container {
+                display: flex;
+                width: 20rem;
+                align-items: center;
+                .menu {
+                    text-align: center;
+                    transition: all 2s ease;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2);
+                    border-radius: 5px;
+                    width: 150px;
+                    height: 100px;
+                    background-color: #ffff;
+                    top: 4rem;
+                    right: 5rem;
+                    position: absolute;
+                    a {
+                        color: var(--text-primary);
+                        text-decoration: none;
+                    }
+                    p {
+                        color: var(--text-primary);
+                        cursor: pointer;
+                        margin-top: 10px;
+                    }
+                }
+                .login {
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    height: 70%;
+                    width: 80%;
+                    .login-btn {
+                        cursor: pointer;
+                    }
+                    p {
+                        font-weight: bold;
+                    }
+                    span {
+                        display: flex;
+                        background-color: #e9f7f7;
+                        align-items: center;
+                        justify-content: center;
+                        width: 3rem;
+                        height: 3rem;
+                        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                        border-radius: 100%;
+                        font-size: 1rem;
+                    }
+                }
             }
         }
-    }
-}
+        
+        @media(width < 600px) {
+            header {
+                span {
+                    width: 100%;
+                }
+                .icons-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .icons {
+                        width: 100%;
+                    }
+                }
+                .menu-container {
+                    width: 100%;
+                    justify-content: center;
+                    height: 100%;
+                    padding: 5px;
+                    .menu {
+                        top: 4.5rem;
+                        right: 1rem;
+                        a {}
+                        p {}
+                    }
+                    .login {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        p {
+                            font-size: 0.8rem;
+                        }
+                        span {
+                            font-size: 0.8rem;
+                            height: 6vh;
+                            width: 6vh;
+                        }
+                    }
+                }
+            }
+        }
+        
+        @media (width >=600px) and (width <=1024px) {
+            header {
+                span {
+                    width: 100%;
+                    img {
+                        width: 50%;
+                    }
+                }
+                .icons-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .icons {
+                        width: 100%;
+                    }
+                }
+                .menu-container {
+                    width: 100%;
+                    justify-content: center;
+                    height: 100%;
+                    .menu {
+                        top: 3.5rem;
+                        right: 3rem;
+                        a {}
+                        p {}
+                    }
+                    .login {
+                        width: 50%;
+                        p {
+                            font-size: 0.8rem;
+                        }
+                        span {
+                            height: 6vh;
+                            width: 6vh;
+                        }
+                    }
+                }
+            }
+        }
