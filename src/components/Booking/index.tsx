@@ -1,5 +1,5 @@
 import './styles.scss'
-import { BookingProps } from '../../interfaces/interface';
+import { BookingProps, FormattedDateTime } from '../../interfaces/interface';
 import { format } from 'date-fns';
 import { AiOutlineEllipsis } from 'react-icons/ai'
 import { useState } from 'react'
@@ -33,19 +33,24 @@ const Booking: React.FC<BookingProps> = ({ item, deleteItem }) => {
     setIsModalOpen((prevIsModalOpen) => !prevIsModalOpen);
   };
 
-  const formatDateTime = (dateTime: string) => {
-    if (!dateTime) return '';
+  const formatDateTime = (dateTime: string): FormattedDateTime => {
+    if (!dateTime) return { date: '', time: '' };
 
     const formattedDate = format(new Date(dateTime), 'dd/MM/yyyy');
     const formattedTime = format(new Date(dateTime), 'HH:mm');
-
-    return `${formattedDate}\n${formattedTime}`;
+    return {
+      date: formattedDate,
+      time: formattedTime,
+    };
   };
 
+  const checkOut = formatDateTime(item.checkOut);
+  const checkIn = formatDateTime(item.checkIn);
+
   return (
-    <section className='booking'>
+    <article className='booking'>
       <div className="booking-img">
-        <img src={getImagePath(item.acomodacao)} alt="" />
+        <img onClick={toggleModal} src={getImagePath(item.acomodacao)} alt="Imagem do quarto reservado" />
         <div className="description">
           <button onClick={toggleModal}>{'#' + item.id}</button>
           <p>{item.acomodacao}</p>
@@ -58,11 +63,29 @@ const Booking: React.FC<BookingProps> = ({ item, deleteItem }) => {
       </div>
 
       <div className="booking-item">
-        <span>{formatDateTime(item.checkIn)}</span>
+        <span>
+          <time
+            dateTime={item.checkIn}>
+            {checkIn.date}
+          </time>
+          <time
+            dateTime={item.checkIn}>
+            {checkIn.time}
+          </time>
+        </span>
       </div>
 
       <div className="booking-item">
-        <span>{formatDateTime(item.checkOut)}</span>
+        <span>
+          <time
+            dateTime={item.checkOut}>
+            {checkOut.date}
+          </time>
+          <time
+            dateTime={item.checkOut}>
+            {checkOut.time}
+          </time>
+        </span>
       </div>
 
       <button className='btn-modal' type='button' onClick={toggleModal}>
@@ -70,9 +93,9 @@ const Booking: React.FC<BookingProps> = ({ item, deleteItem }) => {
       </button>
 
       {isModalOpen && (
-        <Modal deleteItem={deleteItem} getImagePath={getImagePath} item={item} toggleModal={toggleModal} />
+        <Modal checkOut={checkOut} checkIn={checkIn} deleteItem={deleteItem} getImagePath={getImagePath} item={item} toggleModal={toggleModal} />
       )}
-    </section>
+    </article>
   )
 }
 export default Booking
