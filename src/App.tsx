@@ -1,5 +1,5 @@
 import './styles.scss'
-
+import { ToastContainer } from 'react-toastify';
 import Aside from './components/Aside'
 import Navbar from './components/Navbar'
 import Register from './pages/register'
@@ -7,7 +7,8 @@ import Bookings from './components/Bookings'
 import { FormValues, SortCriteria } from './interfaces/interface';
 
 import { useEffect, useState } from 'react'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter, useNavigate } from 'react-router-dom'
+import Logout from './pages/logout';
 
 
 const setLocalStorage = (items: FormValues[]) => {
@@ -16,12 +17,16 @@ const setLocalStorage = (items: FormValues[]) => {
 
 const App: React.FC = () => {
 
+  const [noResults, setNoResults] = useState(false);
   const [data, setData] = useState<FormValues[]>([]);
+  const [originalData, setOriginalData] = useState(data);
   const [sortCriteria, setSortCriteria] = useState<SortCriteria | null>(null);
+  const [isAsideEnabled, setIsAsideEnabled] = useState(true);
 
   useEffect(() => {
     const defaultList: FormValues[] = JSON.parse(localStorage.getItem('bookings') || '[]');
-    setData(defaultList);
+    setData(defaultList)
+    setOriginalData(defaultList)
   }, []);
 
   const sortData = (criteria: SortCriteria) => {
@@ -58,26 +63,43 @@ const App: React.FC = () => {
   }
 
   const handleSearch = (searchItem: string) => {
-    const filteredData = data.filter((item) => {
-      const searchTerm = searchItem.toLowerCase();
-      const acomodacao = item.acomodacao.toLowerCase();
-      const data = item.checkIn.toLowerCase();
-      const nomeHospede = item.nome.toLowerCase();
 
-      return acomodacao.includes(searchTerm) || data.includes(searchTerm) || nomeHospede.includes(searchTerm);
+    const removeAccents = (str: string) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    const searchTerm = removeAccents(searchItem.toLowerCase())
+
+    const filteredData = originalData.filter((item) => {
+      const acomodacao = removeAccents(item.acomodacao.toLowerCase())
+      const data = removeAccents(item.checkIn.toLowerCase())
+      const nomeHospede = removeAccents(item.nome.toLowerCase())
+
+      return (
+        acomodacao.includes(searchTerm) ||
+        data.includes(searchTerm) ||
+        nomeHospede.includes(searchTerm)
+      );
     });
     setData(filteredData);
+    setNoResults(filteredData.length === 0)
   }
+
+
+  const handleLogout = () => {
+    setIsAsideEnabled(false);
+  };
 
   const router = createBrowserRouter([
     {
       path: "/",
       element:
         <Bookings
+          noResults={noResults}
+          data={data}
           sortData={sortData}
           handleSearch={handleSearch}
           deleteItem={deleteItem}
-          data={data}
         />,
     },
     {
@@ -88,13 +110,19 @@ const App: React.FC = () => {
           addItem={addItem}
         />,
     },
+    {
+      path: "logout",
+      element:
+        <Logout handleLogout={handleLogout} />,
+    },
   ]);
 
   return (
     <>
       <Navbar />
       <main className='container'>
-        <Aside />
+        {isAsideEnabled && <Aside />}
+        <ToastContainer position='top-center' />
         <RouterProvider router={router} />
       </main>
     </>
