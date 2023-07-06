@@ -3,12 +3,9 @@ export enum SortCriteria {
   Nome = 'nome',
   CheckIn = 'checkIn',
 }
-
-export interface MainProps {
-  deleteItem: (
-    id: string
-  ) => void;
-  data: ReservaData[];
+export interface FormattedDateTime {
+  date: string;
+  time: string;
 }
 export interface FormProps {
   addItem: (
@@ -18,8 +15,12 @@ export interface FormProps {
     updatedItem: FormValues
   ) => void;
 }
+export interface LogoutProps {
+  handleLogout: () => void;
+}
 
 export interface BookingsProps {
+  noResults: boolean;
   sortData: (
     criteria: SortCriteria
   ) => void;
@@ -40,10 +41,13 @@ export interface BookingProps {
 }
 
 export interface ModalProps {
+  checkOut: FormattedDateTime;
+  checkIn: FormattedDateTime;
   item: ReservaData;
   deleteItem: (
     id: string
   ) => void;
+
   toggleModal: () => void;
   getImagePath: (
     acomodacao: string
