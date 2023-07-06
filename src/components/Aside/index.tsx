@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import './styles.scss'
 import { FiCommand, FiPlus, FiSettings } from 'react-icons/fi'
 
+
 const Aside: React.FC = () => {
 
   const [selectedLink, setSelectedLink] = useState('');
+  const pathname = window.location.pathname;
 
   useEffect(() => {
-    const pathname = window.location.pathname;
     setSelectedLink(pathname);
-  }, []);
+  }, [pathname]);
 
-
+  console.log(selectedLink)
 
   return (
     <div className="aside-container">
