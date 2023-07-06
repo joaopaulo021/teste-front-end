@@ -1,17 +1,28 @@
+import { useEffect, useState } from 'react';
 import './styles.scss'
 import { FiCommand, FiPlus, FiSettings } from 'react-icons/fi'
 
 const Aside: React.FC = () => {
+
+  const [selectedLink, setSelectedLink] = useState('');
+
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    setSelectedLink(pathname);
+  }, []);
+
+
+
   return (
     <div className="aside-container">
       <aside>
 
-        <div className="btn-container">
+        <div className={`btn-container ${selectedLink === '/' ? 'selected' : ''}`}>
           <FiCommand />
           <a href="/">Dashboard</a>
         </div>
 
-        <div className="btn-container">
+        <div className={`btn-container ${selectedLink === '/cadastro' ? 'selected' : ''}`}>
           <FiPlus />
           <a href="/cadastro">Nova reserva</a>
         </div>
