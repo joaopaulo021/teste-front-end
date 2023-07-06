@@ -17,7 +17,6 @@ const setLocalStorage = (items: FormValues[]) => {
 
 const App: React.FC = () => {
 
-  const [noResults, setNoResults] = useState(false);
   const [data, setData] = useState<FormValues[]>([]);
   const [originalData, setOriginalData] = useState(data);
   const [sortCriteria, setSortCriteria] = useState<SortCriteria | null>(null);
@@ -85,7 +84,6 @@ const App: React.FC = () => {
       );
     });
     setData(filteredData);
-    setNoResults(filteredData.length === 0)
   }
 
 
@@ -98,7 +96,6 @@ const App: React.FC = () => {
       path: "/",
       element:
         <Bookings
-          noResults={noResults}
           data={data}
           sortData={sortData}
           handleSearch={handleSearch}

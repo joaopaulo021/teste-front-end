@@ -4,7 +4,7 @@ import { BookingsProps, SortCriteria } from '../../interfaces/interface';
 import { nanoid } from 'nanoid';
 import SearchBooking from '../SearchBooking';
 
-const Bookings: React.FC<BookingsProps> = ({ noResults, sortData, handleSearch, data, deleteItem }) => {
+const Bookings: React.FC<BookingsProps> = ({ sortData, handleSearch, data, deleteItem }) => {
 
   return (
 

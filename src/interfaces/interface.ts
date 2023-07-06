@@ -20,7 +20,6 @@ export interface LogoutProps {
 }
 
 export interface BookingsProps {
-  noResults: boolean;
   sortData: (
     criteria: SortCriteria
   ) => void;
