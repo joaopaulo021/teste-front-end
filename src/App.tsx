@@ -7,7 +7,7 @@ import Bookings from './components/Bookings'
 import { FormValues, SortCriteria } from './interfaces/interface';
 
 import { useEffect, useState } from 'react'
-import { RouterProvider, createBrowserRouter, useNavigate } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Logout from './pages/logout';
 
 
@@ -23,11 +23,14 @@ const App: React.FC = () => {
   const [sortCriteria, setSortCriteria] = useState<SortCriteria | null>(null);
   const [isAsideEnabled, setIsAsideEnabled] = useState(true);
 
+
   useEffect(() => {
     const defaultList: FormValues[] = JSON.parse(localStorage.getItem('bookings') || '[]');
     setData(defaultList)
     setOriginalData(defaultList)
   }, []);
+
+  console.log(sortCriteria)
 
   const sortData = (criteria: SortCriteria) => {
     setSortCriteria(criteria);
