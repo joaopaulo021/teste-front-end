@@ -4,7 +4,7 @@ import { BookingsProps, SortCriteria } from '../../interfaces/interface';
 import { nanoid } from 'nanoid';
 import SearchBooking from '../SearchBooking';
 
-const Bookings: React.FC<BookingsProps> = ({ sortData, handleSearch, data, deleteItem }) => {
+const Bookings: React.FC<BookingsProps> = ({ noResults, sortData, handleSearch, data, deleteItem }) => {
 
   return (
 
@@ -43,6 +43,8 @@ const Bookings: React.FC<BookingsProps> = ({ sortData, handleSearch, data, delet
             <h2>Check-out</h2>
           </div>
           <div className="items-container">
+            {noResults && <h1>Nenhum resultado encontrado.</h1>}
+            {data.length === 0 && <h1>Nenhuma reserva encontrada!</h1>}
             {data.map((item) => {
               return <Booking data={data} key={nanoid()} deleteItem={deleteItem} item={item} />;
             })}
